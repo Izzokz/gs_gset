@@ -77,7 +77,9 @@ gs_ft_assign(X<1-255>) will (free and) allocate memory for X instances and retur
 */
 unsigned char	gs_ft_assign(unsigned char nmemb)
 {
-	return (gs(1, nmemb, NULL));
+	if (gs(1, nmemb, NULL))
+		return (1);
+	return (0);
 }
 
 /*
@@ -89,7 +91,9 @@ gs_ft_set((char ***)WOW, "") will set WOW as "".
 */
 unsigned char	gs_ft_set(uintptr_t var, char *name)
 {
-	return (gs(0, var, name));
+	if (gs(0, var, name))
+		return (1);
+	return (0);
 }
 
 /*
