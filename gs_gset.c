@@ -36,7 +36,7 @@ static unsigned char	gs_gs_init(uintptr_t *(*vars)[2], unsigned char nmemb)
 		return (0);
 	}
 	gs_ft_bzero((uintptr_t)**vars, (nmemb + 1) * sizeof(uintptr_t *));
-	gs_ft_bzero((uintptr_t)*(*vars + 1), (nmemb + 1) * sizeof(uintptr_t *));
+	gs_ft_bzero((uintptr_t)(*(*vars + 1)), (nmemb + 1) * sizeof(uintptr_t *));
 	return (nmemb);
 }
 
@@ -73,7 +73,8 @@ static uintptr_t	gs(unsigned char init, uintptr_t set, char *name)
 gs_ft_assign must be used before and after every operation.
 gs_ft_assign will initialize and terminate.
 gs_ft_assign(0) will free everything and return 0.
-gs_ft_assign(X<1-255>) will (free and) allocate memory for X instances and return X.
+gs_ft_assign(X<1-255>) will (free and) allocate memory for X instances.
+Returns X or 0 on fail.
 */
 unsigned char	gs_ft_assign(unsigned char nmemb)
 {
@@ -88,6 +89,7 @@ gs_ft_set((void *)ptr, "s1") will set ptr as "s1".
 gs_ft_set(0, "s2") won't do anything.
 gs_ft_set(555, NULL) won't do anything.
 gs_ft_set((char ***)WOW, "") will set WOW as "".
+Possible malloc fails.
 */
 unsigned char	gs_ft_set(uintptr_t var, char *name)
 {
@@ -101,7 +103,8 @@ gs_ft_get should be used after gs_ft_set.
 gs_ft_get(NULL) will return 0.
 gs_ft_get(unexisting_assignment) will return 0.
 gs_ft_get(existing_assignment) will return the assigned variable as a uintptr_t.
-(t_type *)gs_ft_get("type0") will cast the stored uintptr_t into the desired type.
+(t_typ *)gs_ft_get("typ0") will cast the stored uintptr_t into the desired type.
+No fail possible.
 */
 uintptr_t	gs_ft_get(char *name)
 {
