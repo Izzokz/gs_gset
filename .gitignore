@@ -1,0 +1,5 @@
+*.d
+*.o
+main.c
+gs_gset.a
+a.out
