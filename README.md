@@ -36,7 +36,7 @@ As it is ONLY storing integers (since memory is just a bunch of integers), the f
 It allows to store `(t_types)`, `(char **)`, `(void *)`, `(int)`, `(unsigned long *)`... Everything.
 
 ## How To Use
-```
+```c
 /* -|SETTING UP|- */
 |------------------------------------------------------------------------------------------------------------------------------|
 if (!gs_ft_assign(2)) // Assign 2 places (Handle potential malloc fails)
