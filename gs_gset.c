@@ -79,7 +79,7 @@ Returns X or 0 on fail.
 unsigned char	gs_ft_assign(unsigned char nmemb)
 {
 	if (gs(1, nmemb, NULL))
-		return (1);
+		return (nmemb);
 	return (0);
 }
 
